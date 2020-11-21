@@ -1,0 +1,69 @@
+ajax (async javascript and xml) 
+
+作用：去服务器要 数据,
+
+1.基本概念
+    a.客户端与服务器
+    客户端：
+            广义角度：用户手中的电脑
+            狭义角度：电脑中的浏览器
+
+    服务器：
+        电脑：给我们的用户提供服务
+    
+    b.URL地址
+    如： https://www.baidu.com:80/abc/index.html
+
+    协议：http  或 https    web开发中的
+
+    服务器名称：
+        域名：baidu.com
+        IP: 101.11.11.212  -> 服务器的地址
+
+    端口：80 默认
+
+    文件所在路径：abc/index.html
+
+2.ajax的学习
+
+    var xhr = new XMLHttpRequest()
+    xhr.open()
+    xhr.send()
+    xhr.onreadystatechange = function(){
+        数据从服务器端返回了
+    }
+
+3.通过jquery中封装的ajax快速实现业务
+
+    $.get()
+    $.post()
+
+    $.ajax() :重点 实现以上两种方式
+
+4.接口 API (application programming interface)
+
+    API: 从两个方向看
+    (1) 函数  var dom =  document.getElementById("id值")
+    (2) 地址  http://www.liulongbin.top:3006/api/getbooks => 数据
+    
+
+5.接口测试工具 postman
+
+  浏览器中的地址栏只可以发送get请求
+
+
+6.案例
+由于 ajax.frontend.itheima.net 域名解析出现了问题，
+所以双元 ajax 基础 -> 第1天视频中，聊天机器人的接口不能正常访问：
+http://ajax.frontend.itheima.net:3006/api/robot?spoken=hello
+http://ajax.frontend.itheima.net:3006/api/synthesize?text=hello
+
+遇到上述问题的老师，请更换成下面的域名地址，即可正常使用：
+http://www.escook.cn:3006/api/robot?spoken=hello
+http://www.escook.cn:3006/api/synthesize?text=hello
+
+完整的双元 ajax 基础的接口文档，请参考：
+https://www.showdoc.cc/ajaxapi?page_id=3753323218792173
+
+
+   

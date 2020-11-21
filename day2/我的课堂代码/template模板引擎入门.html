@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../code/lib/template-web.js"></script>
+    <script src="../code/lib/jquery.js"></script>
+</head>
+
+<body>
+    <!-- 萝卜坑 -->
+</body>
+
+<!-- 第二步：准备模板 -->
+<script type="text/html" id="tpl">
+    <h3>用户信息</h3>
+    <div>用户名：<span>{{name}}</span></div>
+    <div>年龄：<span>{{age}}</span></div>
+    <div>婚否：<span>{{isMarry?"已婚":"未婚"}}</span></div>
+    <div>{{data|dateFormat}}</div>
+    <div>
+        {{if age>18}}
+        可以结婚了
+        {{else}}
+        不可以结婚
+        {{/if}}
+    </div>
+    <ul>
+        {{each hobby}}
+        <li>{{$value}}---{{$index}}</li>
+        {{/each}}
+
+    </ul>
+</script>
+
+
+
+<script>
+
+    // 模板引擎对数据格式化
+    template.defaults.imports.dateFormat=function(date){
+        var y=date.getFullYear();
+        var m=date.getMonth()+1;
+        var d=date.getDate();
+
+        return `${y}-${m}-${d}`
+    }
+   
+    var data = {
+        name: "jack",
+        age: "18",
+        isMarry: false,
+        data:new Date,
+        hobby: ["旅游", "看电影", "听音乐"]
+    }
+
+    // 第三步：数据与模板结合
+    // 注意：template第一个参数：不加#号 
+    // template第二个参数：必须是对象{}
+    // 是将对象的成员放{{}}，不要写data.name
+    var html = template("tpl", data);
+
+    $("body").html(html); //jQuery渲染
+    
+    // document.body.innerHTML=html;  // 原生js渲染
+</script>
+
+</html>
