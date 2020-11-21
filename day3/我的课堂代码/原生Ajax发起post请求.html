@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1
+        var xhr = new XMLHttpRequest();
+        xhr.open("post", "http://www.liulongbin.top:3006/api/addbook")
+        // 1. post请求必须设置请求头
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+        // 2. post请求参数要写在send方法中
+        xhr.send("bookname=liuxiaoliu&author=liuxiaoliu&publisher=liuxiaoliu")
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+            //    xhr.responseText 值接收服务器端传回来的数据=>字符串
+                console.log(xhr.responseText);
+
+                var res=JSON.parse(xhr.responseText)
+                console.log(res);
+            }
+        }
+    </script>
+</body>
+
+</html>

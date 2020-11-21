@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //正则表达式方法：
+        //  test()  → Boolean
+        // exec()   →Array
+        // str.replace()  //字符串的方法
+
+
+        // var reg=/abc/;
+
+        // var str="abcdefg";
+
+        // var result=reg.exec(str);
+
+        // console.log(result);
+
+
+
+        // 下标为0，匹配的是整个正则表达式，下标为1匹配第一个括号的内容 ，下标为2匹配第二个括号的内容
+        // ():分组 或 提高优先级
+        var reg = /(d{17})([0-9xX])/;
+        var str = "我的身份证号码是:42102319921012789";
+
+        var res = reg.exec(str);
+
+        //res是个数组
+        //下标 0：匹配的所有的字符串：42102319921012789
+        //下标 1：匹配的正则表达式中第一个（ 到结束匹配的内容:4210231992101278）
+        //下标 2: 匹配的正则表达式中第二个 ( 到结束匹配的内容：4)
+        console.log(res);
+
+
+
+
+
+
+
+        //replace替换为真值
+        var reg = /{{\s*([a-zA-Z]+)\s*}}/
+        var str = '<div>{{name}}今年{{age}}岁了</div>'
+        var obj = {
+            name: 'jack',
+            age: 18
+        }
+        var patternResult = null
+        while (patternResult = pattern.exec(str)) {
+            str = str.replace(patternResult[0], data[patternResult[1]])
+        }
+        console.log(str);
+    </script>
+</body>
+
+</html>

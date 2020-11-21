@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用xhr对象发起GET请求--步骤</title>
+</head>
+
+<body>
+    <script>
+        // 1.  new xhr对象 js与服务器交互(传输数据)
+        var xhr = new XMLHttpRequest()
+        
+        // 2.  准备数据 xhr.open(请求方式，请求地址，同步或异步(不写默认异步))
+        xhr.open('GET', 'http://www.liulongbin.top:3006/api/getbooks?id=1') //?id=1是查询字符串(说白了就是带参数)，向服务器发送信息的字符串
+        
+        // 3.  发送数据
+        xhr.send()
+        
+        // 4.  监听数据是否从服务器端返回
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) { //这行是固定的写法
+                console.log(xhr.responseText);
+                // readyState被改变，这个函数就会被触发
+            }
+        }
+
+        // XMLHttpRequest对象的 readyState属性，表示当前 Ajax 请求所处的状态
+        //xhr.readyState
+        // 0:Ajax对象已经创建了---买,还未建立连接
+        // 1:open方法已经调用，已经向服务器请求数据了 ----下单
+        
+        // 2：数据已经从服务器返回了 ----快递到手上了
+        // 3：数据正在解析  ----拆快递
+        // 4： 数据解析完毕  ----拆完了
+
+        // xhr.status: 数据可以使用
+    </script>
+</body>
+
+</html>
