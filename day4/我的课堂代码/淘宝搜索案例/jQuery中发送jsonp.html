@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../code/lib/jquery.js"></script>
+</head>
+
+<body>
+    <script>
+        // 通过Ajax去第三方服务器拿数据
+
+        $.ajax({
+            type: "get",
+            url: "http://www.escook.cn:3006/api/jsonp",
+            data: {
+                name: "jack",
+            },
+            
+            dataType: "jsonp", //实现跨域请求
+            // jsonp: "cb", //指定参数名字，默认callback
+            // jsonpCallback: "abc", // 自定义回调函数名称，默认Jqueryxxx格式
+           
+            success: function (res) {
+                console.log(res);
+            }
+        })
+    </script>
+</body>
+
+</html>

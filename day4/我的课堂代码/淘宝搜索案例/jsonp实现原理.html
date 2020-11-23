@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 动态创建标签
+        function test(data){
+            console.log(data);
+        }
+        var script=document.createElement("script")
+        script.src="demo.js";
+        document.body.appendChild(script)
+
+        
+
+        // jsonp的原理(本质函数调用)
+        // 动态创建script标签，给script添加src属性发送请求，在页面上声明一个函数，从服务器端返回一个函数调用
+
+        // 动态创建的标签发送请求是异步的
+
+      
+    </script>
+</body>
+</html>

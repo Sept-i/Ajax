@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 通过Ajax去第三方服务器拿数据
+
+        $.ajax({
+            type:"get",
+            url:"http://www.escook.cn:3006/api/jsonp",
+            data:{
+                name:"jack",
+            },
+            success:function(res){
+                console.log(res);
+            }
+        })
+    </script>
+</body>
+</html>

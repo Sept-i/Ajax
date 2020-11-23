@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // axios是第三方的库：功能单一，只能发送数据请求
+        // 区别jQuery：jQuery代码太大了
+
+        // get请求
+        axios.get("http://www.liulongbin.top:3006/api/getbooks", {
+            params: {
+                id: 1
+            }
+        }).then(function (res) {
+            console.log(res.data);
+        })
+
+        // post请求
+        axios.post("http://www.liulongbin.top:3006/api/addbook", {
+            bookname: "hello",
+            author: "xiaobai",
+            publisher: "hello出版社"
+        }).then(function (res) {
+            console.log(res.data);
+        })
+
+
+
+
+
+        // // axios请求
+        // // get
+        axios({
+            params: {
+                /*GET参数*/ }
+        }).then(function (res) {})
+
+        // post
+        axios({
+            data: {
+                /*post数据*/ }
+        }).then(function (res) {})
+    </script>
+</body>
+
+</html>
