@@ -120,10 +120,22 @@
 
     // 输入框键盘抬起时间
     $(function () {
+      // 1. 定义延时器的Id
+      var timer = null
+      // 2. 定义防抖的函数
+      function debounceSearch(kw) {
+        timer = setTimeout(function () {
+          getSuggestList(kw)
+        }, 500)
+      }
+
+
+      // 为输入框绑定 keyup 事件
       $(".ipt").on("keyup", function () {
 
         var keywords = $(this).val().trim()
-     
+        // 3. 清空 timer
+        clearTimeout(timer)
 
         $.ajax({
           type: "get",
@@ -131,7 +143,7 @@
           data: {
             q: keywords
           },
-          beforeSend: function () {    //空格不发请求，做判断
+          beforeSend: function () { //空格不发请求，做判断
             if (keywords.length <= 0) {
               $("#suggest-list").empty().hide();
               return false;
@@ -141,8 +153,8 @@
           success: function (res) {
             console.log(res);
 
-            //两个字符中间有空格，不会请求数据
-            if (res.result.length <= 0) return;      
+            //两个字符中间有空格，请求回来的数据不要
+            if (res.result.length <= 0) return;
 
             var html = template("tpl", res)
             $("#suggest-list").html(html).show();
